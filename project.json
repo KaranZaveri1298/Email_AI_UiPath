@@ -1,0 +1,62 @@
+{
+  "name": "SMA_SmartMailAutomation",
+  "description": "SMA - determine mail classification, intent and drive process accordingly",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.11.1-preview]",
+    "UiPath.Form.Activities": "[1.6.0]",
+    "UiPath.IntelligentOCR.Activities": "[4.17.0-preview]",
+    "UiPath.Mail.Activities": "[1.11.2-preview]",
+    "UiPath.MLServices.Activities": "[1.1.8]",
+    "UiPath.Persistence.Activities": "[1.2.2]",
+    "UiPath.System.Activities": "[21.8.0-preview]",
+    "UiPath.UIAutomation.Activities": "[21.8.0-preview]",
+    "UiPath.WebAPI.Activities": "[1.9.0-preview]",
+    "UiPathTeam.Interactive.Activities": "[1.4.9]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.4.4.0",
+  "projectVersion": "1.0.7",
+  "runtimeOptions": {
+    "exceptionHandlerWorkflow": "GlobalHandler.xaml",
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": true,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "4164a278-93e9-46b2-b8e6-13fa3705b4e6",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}

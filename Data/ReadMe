@@ -1,0 +1,3 @@
+Files in the folder are to be exported to a local shared place within robot's reach.
+these files are not being used by robot as is ,
+Config.xlsx filepath must be introduced via Atguments on Main.xaml

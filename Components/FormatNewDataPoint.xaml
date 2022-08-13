@@ -1,0 +1,274 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FormatNewDataPoint" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="transfer_EmailBody" Type="InArgument(x:String)" />
+    <x:Property Name="transfer_classification" Type="InArgument(x:String)" />
+    <x:Property Name="in_Json" Type="InArgument(x:String)" />
+    <x:Property Name="out_UFoutput" Type="OutArgument(x:String)" />
+    <x:Property Name="dataCarrierName" Type="OutArgument(x:String)" />
+    <x:Property Name="in_retrainType" Type="InArgument(x:String)" />
+    <x:Property Name="in_LowConfidenceJsonFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_ML_datasetURL" Type="InArgument(x:String)" />
+    <x:Property Name="in_ML_APIKey" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1703,1688</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="40">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Persistence.Activities.Model.Task</x:String>
+      <x:String>UiPath.Persistence.Activities.FormTask</x:String>
+      <x:String>UiPath.Persistence.Activities.Tasks</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Persistence.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.MLServices</x:String>
+      <x:String>UiPath.MLServices.Enums</x:String>
+      <x:String>UiPath.MLServices.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>AttendedRobotStatus.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.MLServices.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Salesforce</AssemblyReference>
+      <AssemblyReference>UiPath.Salesforce.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MLServices</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>AttendedRobotStatus</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Format New Data Point" sap:VirtualizedContainerService.HintSize="839,1523" sap2010:WorkflowViewState.IdRef="Sequence_27">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_newDataPoint" />
+      <Variable x:TypeArguments="x:String" Name="UF_FileName" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="UF_Headers" />
+      <Variable x:TypeArguments="x:Int32" Name="UF_StatusCode" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[IsNothing(in_Json) Or String.IsNullOrEmpty(in_Json) Or String.IsNullOrWhiteSpace(in_Json)]" sap:VirtualizedContainerService.HintSize="797,826" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,668" sap2010:WorkflowViewState.IdRef="Sequence_30">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:BuildDataTable DataTable="[dt_newDataPoint]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Text&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Classification&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{transfer_EmailBody,transfer_classification}]" DataTable="[dt_newDataPoint]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+          <Assign DisplayName="Assign:Data Carrier" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[dataCarrierName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\Downloads\" + in_retrainType + "_" + "New_Data_"  + System.DateTime.Now.ToString("dd-MM-yyyy_hhmmss") + ".csv"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[dt_newDataPoint]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[dataCarrierName]" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="reset dt and reinit" sap:VirtualizedContainerService.HintSize="376,415" sap2010:WorkflowViewState.IdRef="Sequence_29">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign:Data Carrier" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[dataCarrierName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String" xml:space="preserve">[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\Downloads\" + in_retrainType + "_" + "New_Data_"  + System.DateTime.Now.ToString("dd-MM-yyyy_hhmmss") + ".json"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <Assign DisplayName="Assign:Data Carrier" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[dataCarrierName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[in_LowConfidenceJsonFolder + in_retrainType + "_" + "New_Data_"  + System.DateTime.Now.ToString("dd-MM-yyyy_hhmmss") + ".json"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:WriteTextFile DisplayName="Write Text File" FileName="[dataCarrierName]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[in_Json]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="797,465" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:10">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <uma:MLStorageUpload Body="{x:Null}" ContinueOnError="{x:Null}" FileName="{x:Null}" Result="{x:Null}" RuntimeDataset="{x:Null}" RuntimeProject="{x:Null}" SelectedDataset="{x:Reference __ReferenceID0}" SelectedProject="{x:Reference __ReferenceID1}" StoragePath="{x:Null}" ApiKey="[in_ML_APIKey]" Connection="Endpoint" DatasetPublicUrl="[in_ML_datasetURL]" DisplayName="Upload File" FileNameInStorage="[UF_FileName]" FilePath="[dataCarrierName]" sap:VirtualizedContainerService.HintSize="350,291" sap2010:WorkflowViewState.IdRef="MLStorageUpload_1" RefreshDataset="False" RefreshProject="False" ResponseHeaders="[UF_Headers]" StatusCode="[UF_StatusCode]">
+            <uma:MLStorageUpload.Datasets>
+              <um:PageData x:TypeArguments="um:Dataset" PageNum="1" PageSize="50" TotalCount="2">
+                <um:PageData.DataList>
+                  <scg:List x:TypeArguments="um:Dataset" Capacity="4">
+                    <um:Dataset Id="e82dacca-c830-45f6-b7df-03d06ade1a49" Name="Email Classification Test Data" ProjectId="5622d645-3e58-45d4-90bc-d0958aca45cd" />
+                    <um:Dataset x:Name="__ReferenceID0" Id="08306a53-441d-4445-9698-44a5f27242ad" Name="Email Classification Train Data" ProjectId="5622d645-3e58-45d4-90bc-d0958aca45cd" />
+                  </scg:List>
+                </um:PageData.DataList>
+              </um:PageData>
+            </uma:MLStorageUpload.Datasets>
+            <uma:MLStorageUpload.Projects>
+              <um:PageData x:TypeArguments="um:Project" PageNum="1" PageSize="50" TotalCount="50">
+                <um:PageData.DataList>
+                  <scg:List x:TypeArguments="um:Project" Capacity="64">
+                    <um:Project Id="57ef3793-4ffe-44cd-bd13-a798a428d283" Name="addyTest" />
+                    <um:Project Id="41cbd644-ad52-4645-a52a-8b55c7cb7c1b" Name="afoo" />
+                    <um:Project Id="c456ef02-e811-4b0b-b29e-39b937764688" Name="aiflevi" />
+                    <um:Project Id="f60b3af1-a894-428f-bd0a-9783615b5463" Name="AmritaMogaliTest" />
+                    <um:Project Id="9564bce9-2188-456e-aa77-b73835002f33" Name="AncaTest" />
+                    <um:Project Id="406200c5-1866-4c30-8837-9409c652b4ee" Name="BERT Text Classification" />
+                    <um:Project Id="adbd701f-f918-4a6b-a6ef-90faa09904b3" Name="Bogdan" />
+                    <um:Project Id="0ade0fd7-085a-44c9-9664-189ea910bb1c" Name="BOW Text Classification" />
+                    <um:Project Id="84631137-fe52-4798-bb06-4a9f7d14e456" Name="cabuz_test" />
+                    <um:Project Id="196b6271-e854-43f5-b1e7-3adcafcc28d4" Name="ConsumerComplaints Project" />
+                    <um:Project Id="e91ba891-ee67-4cde-8343-cfa8ad827e0c" Name="DanielMelfaANZ" />
+                    <um:Project Id="83cfe875-cbe7-45a1-a904-437af9bc8177" Name="DevCon" />
+                    <um:Project Id="c417229b-ed46-4d4a-9d54-fe5a75ac4d35" Name="document_text_classifier" />
+                    <um:Project Id="fc592669-4530-4d7d-a2e8-f4df6aff3dbc" Name="Email Classification" />
+                    <um:Project Id="7c843bed-5315-479f-bc5f-53b8bec04f67" Name="Email Classifier" />
+                    <um:Project Id="f0fb6aed-6568-4fbb-9db9-a0b93ae98fdb" Name="flevi" />
+                    <um:Project Id="5fd744f3-d94c-4456-b5f3-df3bc19e3261" Name="Florin" />
+                    <um:Project Id="049ad76a-fe11-4fc5-880f-bb69aa6e42f7" Name="IdentityHello Project" />
+                    <um:Project Id="e4a764db-0f2f-4409-a359-fc40a2478303" Name="Image Classifier" />
+                    <um:Project Id="fc43374a-5a62-4949-b13e-6ddec117b5af" Name="Ioana Test OOB" />
+                    <um:Project Id="fa2f4464-380c-4bec-a933-7903a05404a6" Name="KP_test" />
+                    <um:Project Id="809774e2-d67d-40ff-bc66-1ea9736eaef5" Name="Mircea" />
+                    <um:Project Id="b6495209-a938-43d6-8ecb-7584364663b4" Name="ML_Document_Classification" />
+                    <um:Project Id="e5321bae-7878-47bf-ba3f-d587fe4788b2" Name="Moneygram" />
+                    <um:Project Id="0a7309f9-c602-41be-83ed-bf3d1be66413" Name="Moni_DM_Testing" />
+                    <um:Project Id="21cd9cbc-79b6-48c4-b3ac-1aefb7d0535d" Name="Multilingual Text Classification" />
+                    <um:Project Id="dc7ce516-259e-44ed-a418-070927f6a0e4" Name="My First Project" />
+                    <um:Project Id="3d0a02ba-e8fd-49a2-91df-b04740f02e61" Name="NER" />
+                    <um:Project Id="1b7cc6c7-5969-4a65-a358-9dd7575ee204" Name="ONE_Spec_Discovery_Project" />
+                    <um:Project Id="7c75e6c3-c96a-4d4b-b96d-806ce067c8d8" Name="Paul P Test" />
+                    <um:Project Id="b18d107a-2177-49fa-a7ba-040f576be293" Name="PaulC_Test" />
+                    <um:Project Id="6847f0d2-0c9e-4483-9294-b36cba1eda73" Name="POC Anti money laundering" />
+                    <um:Project Id="6508782f-7007-4775-969f-b51a12b1cecc" Name="proj2" />
+                    <um:Project Id="c97107a1-69d3-42ea-9fd7-d2d0939c8568" Name="RC Univariate Timeseries Model" />
+                    <um:Project Id="29abf8ab-4ad1-437f-8daa-73b97d3a2a88" Name="sample" />
+                    <um:Project Id="71a0c972-037a-4bf9-8100-bd1d5345ceee" Name="semantic_similarity" />
+                    <um:Project Id="6e0676b6-30b1-400d-94d0-01496f57d1df" Name="Shashank_Test" />
+                    <um:Project x:Name="__ReferenceID1" Id="5622d645-3e58-45d4-90bc-d0958aca45cd" Name="SmartEmail_WellFargo_NER" />
+                    <um:Project Id="aac17e4b-128d-4f58-9171-02f09199c2c7" Name="Sorin" />
+                    <um:Project Id="9293935b-746f-4adf-9b3d-ec09e121e1da" Name="Tarun_IFE_Test" />
+                    <um:Project Id="4878a564-5204-4103-a91b-069c1042dfbb" Name="Tarun_Test_Project" />
+                    <um:Project Id="4e5e6565-6753-465e-b85e-0d8014c2e927" Name="Tarun_TM_Test" />
+                    <um:Project Id="eeec9d58-227d-47ca-b087-4dbb1ab801dd" Name="TextClassifier" />
+                    <um:Project Id="4937b6d3-4d28-48a3-b0c2-08faacc9603c" Name="Tony Test Project" />
+                    <um:Project Id="81ce0d27-af45-450f-a2a8-a239d6ca09eb" Name="TudorTest" />
+                    <um:Project Id="640f4c05-e02d-4384-806d-c8baedf47512" Name="Univariate Time Series" />
+                    <um:Project Id="20147930-636e-40b4-936f-4d329f6566ad" Name="Univariate timeseries" />
+                    <um:Project Id="0de4b3ee-7d43-4c0b-b8cd-41b6fdc0db8f" Name="Unstructured" />
+                    <um:Project Id="95b57f6e-a7cc-4645-bba4-26df0b3c655c" Name="VishalTestProject" />
+                    <um:Project Id="30756f85-1d2c-421e-97e5-e892fdfe6b3c" Name="YOLO OOB" />
+                  </scg:List>
+                </um:PageData.DataList>
+              </um:PageData>
+            </uma:MLStorageUpload.Projects>
+          </uma:MLStorageUpload>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_UFoutput]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Join(", ", {UF_FileName, UF_Headers, UF_StatusCode})]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
